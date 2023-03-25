@@ -4,6 +4,11 @@ FROM node:18
 # Set the working directory in the container
 WORKDIR /app
 
+# Install Java(11 or higher)
+RUN apt-get update && \
+    apt-get install -y openjdk-11-jre-headless && \
+    rm -rf /var/lib/apt/lists/*
+
 # Install the Firebase CLI globally
 RUN npm install -g firebase-tools
 
