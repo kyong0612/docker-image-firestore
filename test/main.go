@@ -8,7 +8,6 @@ import (
 	"time"
 
 	"cloud.google.com/go/firestore"
-	"google.golang.org/api/option"
 )
 
 func main() {
@@ -36,7 +35,7 @@ func main() {
 	client, err = firestore.NewClient(
 		ctx,
 		projectID,
-		option.WithEndpoint(emulatorHost),
+		// option.WithEndpoint(emulatorHost),
 		// option.WithoutAuthentication(),
 	)
 	if err != nil {
