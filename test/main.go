@@ -33,7 +33,12 @@ func main() {
 	ctx := context.Background()
 	ctx, _ = context.WithTimeout(ctx, 10*time.Second)
 
-	client, err = firestore.NewClient(ctx, projectID, option.WithoutAuthentication(), option.WithEndpoint(emulatorHost))
+	client, err = firestore.NewClient(
+		ctx,
+		projectID,
+		option.WithEndpoint(emulatorHost),
+		// option.WithoutAuthentication(),
+	)
 	if err != nil {
 		log.Fatalf("Failed to create client: %v", err)
 	}

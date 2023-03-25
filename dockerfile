@@ -1,5 +1,5 @@
 # Use the official Node.js image as base
-FROM node:18
+FROM google/cloud-sdk:latest
 
 # Set the working directory in the container
 WORKDIR /app
@@ -13,11 +13,12 @@ COPY firebase.json /app
 # COPY .firebaserc /app
 
 # Install the Firebase CLI globally
-RUN npm install -g firebase-tools
+# RUN npm install -g firebase-tools
 
 # Expose the ports used by the emulator
 EXPOSE 8080
-EXPOSE 4000
+# EXPOSE 4000
 
 # Start the Firestore emulator
-CMD ["firebase", "emulators:start", "--only", "firestore", "--project", "my-project-id"]
+# CMD ["firebase", "emulators:start", "--only", "firestore", "--project", "my-project-id"]
+CMD ["gcloud", "beta", "emulators", "firestore", "start", "--host-port=localhost:8080"]
