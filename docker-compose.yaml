@@ -1,0 +1,15 @@
+version: "3.2"
+services:
+  firestore_emulator:
+    build:
+      context: .
+      dockerfile: dockerfile
+    ports:
+      - 8080:8080
+  # app:
+  #   image: your-app-image
+  #   environment:
+  #     - FIRESTORE_EMULATOR_HOST=firestore_emulator:8080
+  #     - FIRESTORE_PROJECT_ID=dummy-project-id
+  # depends_on:
+  #   - firestore_emulator
