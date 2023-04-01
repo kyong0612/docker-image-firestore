@@ -10,15 +10,8 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 COPY firebase.json /app
-# COPY .firebaserc /app
 
-# Install the Firebase CLI globally
-# RUN npm install -g firebase-tools
 
-# Expose the ports used by the emulator
 EXPOSE 8080
-# EXPOSE 4000
 
-# Start the Firestore emulator
-# CMD ["firebase", "emulators:start", "--only", "firestore", "--project", "my-project-id"]
-CMD ["gcloud", "beta", "emulators", "firestore", "start", "--host-port=localhost:8080"]
+CMD ["gcloud", "emulators", "firestore", "start", "--host-port=0.0.0.0:8080"]
